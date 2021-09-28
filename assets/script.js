@@ -1,6 +1,6 @@
 
 // Selects element by id
-var timeEl = document.getElementById('timer');
+var timeEl = document.getElementById("timer");
 var startEl = document.getElementById("startBtn");
 
 var promptEl = document.querySelector(".prompt");
@@ -22,54 +22,74 @@ var answers = [["a1)","b1)","c1)","d1)"], ["a2)","b2)","c2)","d2)"],
 
 promptEl.textContent = "Are you ready to start?";
 
-
-
-function beginQuiz(){
-        //set up time
-    function startTime() {
+function startTime() {
             //Sets interval in variable
-            //beginQuiz();
-        var secondsLeft = 10;
-        var timerInterval = setInterval(function() {
-        secondsLeft--;
-        timeEl.textContent = secondsLeft;
-    
-        if(secondsLeft === 0) {
+    var secondsLeft = 10;
+    var timerInterval = setInterval(function() {
+    secondsLeft--;
+    timeEl.textContent = secondsLeft;
+        
+    if(secondsLeft === 0) {
             //Stops execution of action at set interval
         clearInterval(timerInterval);
-            //Calls function to create and append image
-            //sendMessage();
-            //nextQuestion();
-      
-        }
-
-        }, 1000);
-
+          
     }
+    
+    }, 1000);
+}
+startBtn.addEventListener("click", function(event){
+    document.getElementById("startBtn").style.visibility = 'hidden';
+})
 
-    function nextQuestion(){
-            promptEl.textContent = questions[0];
-            choice1El.textContent = answers[0][0];
-            choice2El.textContent = answers[0][1];
-            choice3El.textContent = answers[0][2];
-            choice4El.textContent = answers[0][3];
-    
-    }
+startBtn.addEventListener("click", function(event){
+     document.getElementById("hideMe").style.visibility = 'visible';
+  })
 
-    startTime();
-    nextQuestion();
-    
-    
-    
-    
+startEl.addEventListener("click", startTime);
+
+function main(){
     
 }
 
+// function beginQuiz(){
+//         //set up time
+//     function startTime() {
+//             //Sets interval in variable
+//             //beginQuiz();
+//         var secondsLeft = 10;
+//         var timerInterval = setInterval(function() {
+//         secondsLeft--;
+//         timeEl.textContent = secondsLeft;
+    
+//         if(secondsLeft === 0) {
+//             //Stops execution of action at set interval
+//         clearInterval(timerInterval);
+//             //Calls function to create and append image
+//             //sendMessage();
+//             //nextQuestion();
+      
+//         }
 
+//         }, 1000);
 
+//     }
 
+//     function nextQuestion(){
+//             promptEl.textContent = questions[0];
+//             choice1El.textContent = answers[0][0];
+//             choice2El.textContent = answers[0][1];
+//             choice3El.textContent = answers[0][2];
+//             choice4El.textContent = answers[0][3];
+    
+//     }
+
+//     startTime();
+//     nextQuestion();
+    
+// }
 
 //click start time to begin count down
 //startEl.addEventListener("click", startTime);
 //click start to ask questions
-startEl.addEventListener("click", beginQuiz);
+
+

@@ -26,3 +26,11 @@ textarea{
     display: block;
     margin-left: 50%;
 }
+
+#hideMe{
+    visibility: hidden;
+}
+
+#startBtn{
+    visibility: visible;
+}
