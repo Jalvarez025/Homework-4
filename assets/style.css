@@ -1,0 +1,28 @@
+
+h1.stopClock{
+   display: inline-block; 
+}
+
+h1.stopClock.text{
+    margin-inline-start: 80%;
+ 
+}
+
+h1.prompt{
+    margin-inline-start: 25%;
+}
+
+.answers{
+    display: block;
+    margin-left: 25%;
+}
+
+textarea{
+    display: block;
+    margin-left: 25%;
+}
+
+.start{
+    display: block;
+    margin-left: 50%;
+}
