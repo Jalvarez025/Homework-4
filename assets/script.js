@@ -3,9 +3,13 @@
 var timeEl = document.getElementById("timer");
 var startEl = document.getElementById("startBtn");
 
+var highScoreEl = document.getElementById("highScore")
+
 var promptEl = document.querySelector(".prompt");
 
 var alertEl = document.querySelector(".answerAlert");
+
+var submitBtnEl = document.getElementById("submitBtn");
 
 //answer choices
 var choice1El = document.querySelector(".choice1");
@@ -71,15 +75,15 @@ startEl.addEventListener("click", function(event){
 
 startEl.addEventListener("click", startTime);
 
-  var score = [];
+var score = [];
 
- function keepScore(){
+function keepScore(){
      if(alertEl.textContent = "Correct" && score.length < 5){
         score.push(1);
-        currentScore = console.log(score.length);
+        currentScore = console.log("Current Score: " + score.length);
     }
     
- }
+}
 
 function correctAnswer(){
     alertEl.textContent = "Correct";
@@ -124,9 +128,42 @@ function nextQuestion(){
     choice3El.textContent = answers[i][2];
     choice4El.textContent = answers[i][3];
     i++;  
+    }else if(i = questions.length){
+        submitScore();
     }
     
 }
+
+function submitScore(){
+    document.getElementById("hideMe").style.visibility = 'hidden';
+    document.getElementById("promptId").style.visibility = 'hidden';
+    document.getElementById("submitCard").style.visibility = 'visible';
+
+    submitBtnEl.addEventListener("click", function(event){
+    userInitials = document.getElementById("myText").value;
+    showHighScore();
+    });
+
+
+}
+
+function showHighScore(){
+    // document.getElementById("hideMe").style.visibility = 'hidden';
+    // document.getElementById("promptId").style.visibility = 'hidden';
+    
+
+    submitBtnEl.addEventListener("click", function(event){
+        document.getElementById("submitCard").style.visibility = 'hidden';
+        document.getElementById("highScoreCard").style.visibility = 'visible';
+        highScoreEl.textContent = userInitials + "-" + score.length; 
+        console.log("High Score: " + highScoreEl.textContent);
+    })
+
+}
+
+    
+    //document.getElementById("demo").innerHTML = x;
+  
 
 // function beginQuiz(){
 //         //set up time

@@ -9,11 +9,15 @@
   </head>
   <body>
     <header>
-      <h1 class = "stopClock text">Seconds left:</h1>
+      <h1 class = "stopClock text" id = "stopClock">Seconds left:</h1>
       <h1 class = "stopClock" id = "timer"></h1>
     </header>
-    <div class="card">
-      <h1 class = "prompt"></h1>
+      <div id = "highScoreCard">
+        <h1>Highscores</h1>
+        <span id = "highScore" ></span>
+      </div>
+      
+      <h1 class = "prompt" id = "promptId"></h1>
       <button class = "start" id = "startBtn">Start</button>
       <ul id = "hideMe">
         <button class = "answers choice1"></button>
@@ -25,7 +29,13 @@
         id = "spanId"
         class = "answerAlert"
       ></span>
-  
+
+    <div class="card">
+      <div id = "submitCard">
+        <h1>Enter initials: </h1>
+        <input type="text" class="myText" id = "myText">
+        <button id = "submitBtn">Submit</button>
+      </div>
     </div>
     <script src="./assets/script.js"></script>
   </body>

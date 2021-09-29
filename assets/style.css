@@ -35,3 +35,21 @@ h1.prompt{
 #startBtn{
     visibility: visible;
 }
+
+#promptId{
+    visibility: visible;
+}
+
+/* .myText{
+    display: inline-block;
+} */
+
+#submitCard{
+    margin-left: 25%;
+    visibility: hidden;
+}
+
+#highScoreCard{
+    margin-left: 25%;
+    visibility: hidden;
+}
