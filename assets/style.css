@@ -17,9 +17,10 @@ h1.prompt{
     margin-left: 25%;
 }
 
-textarea{
+#spanId{
     display: block;
     margin-left: 25%;
+    visibility: visible;
 }
 
 .start{
