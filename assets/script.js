@@ -7,7 +7,8 @@ var highScoreEl = document.getElementById("highScore")
 
 var promptEl = document.querySelector(".prompt");
 
-var alertEl = document.querySelector(".answerAlert");
+//var alertEl = document.querySelector(".answerAlert");
+var alertEl = document.getElementById("spanId")
 
 var submitBtnEl = document.getElementById("submitBtn");
 
@@ -27,24 +28,6 @@ var answers = [["a1)","b1)","c1)","d1)"], ["a2)","b2)","c2)","d2)"],
 ["a3)","b3)","c3)","d3)"], ["a4)","b4)","c4)","d4)"], ["a5)","b5)","c5)","d5)"]];
 
 promptEl.textContent = "Are you ready to start?";
-
-function startTime() {
-            //Sets interval in variable
-    var secondsLeft = 10;
-    var timerInterval = setInterval(function() {
-    secondsLeft--;
-    timeEl.textContent = secondsLeft;
-    
-        
-    if(secondsLeft === 0) {
-            //Stops execution of action at set interval
-        clearInterval(timerInterval);
-        
-          
-    }
-    
-    }, 1000);
-}
 
 choice1El.addEventListener("click", function(event){
     nextQuestion();
@@ -73,7 +56,7 @@ startEl.addEventListener("click", function(event){
     nextQuestion();
 })
 
-startEl.addEventListener("click", startTime);
+startEl.addEventListener("click", nextQuestion);
 
 var score = [];
 
@@ -118,9 +101,15 @@ function wrongAnswer(){
 }
 
 var i = 0;
+//var zeroTime = true;
 
 function nextQuestion(){
-  
+        //Sets interval in variable
+    var secondsLeft = 2;
+    var timerInterval = setInterval(function() {
+    secondsLeft--;
+    timeEl.textContent = secondsLeft;
+
     if(i < questions.length){
     promptEl.textContent = questions[i];
     choice1El.textContent = answers[i][0];
@@ -130,11 +119,29 @@ function nextQuestion(){
     i++;  
     }else if(i = questions.length){
         submitScore();
+    }else if(secondsLeft < 1){
+        submitScore();
     }
+
+    if(secondsLeft < 1) {
+        //Stops execution of action at set interval
+    //zeroTime = false;
+    
+    //timedOut();    
+    clearInterval(timerInterval); 
+    submitScore();
+    //finished = console.log("zeroTime");
+    }
+
+    }, 1000);
+
+  
+ 
     
 }
 
 function submitScore(){
+
     document.getElementById("hideMe").style.visibility = 'hidden';
     document.getElementById("promptId").style.visibility = 'hidden';
     document.getElementById("submitCard").style.visibility = 'visible';
@@ -161,7 +168,13 @@ function showHighScore(){
 
 }
 
-    
+// function timedOut(){
+//     if(zeroTime = false){
+//     document.getElementById("hideMe").style.visibility = 'hidden';
+//     document.getElementById("promptId").style.visibility = 'hidden';
+//     document.getElementById("submitCard").style.visibility = 'visible';
+//     }
+// }
     //document.getElementById("demo").innerHTML = x;
   
 
