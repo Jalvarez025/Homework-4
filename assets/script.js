@@ -56,7 +56,7 @@ startEl.addEventListener("click", function(event){
     nextQuestion();
 })
 
-startEl.addEventListener("click", nextQuestion);
+startEl.addEventListener("click", setTime);
 
 var score = [];
 
@@ -71,13 +71,13 @@ function keepScore(){
 function correctAnswer(){
     alertEl.textContent = "Correct";
 
-    var secondsLeft = 1;
-    var timerInterval = setInterval(function() {
-    secondsLeft--;
+    var secondsLeft2 = 1;
+    var timerInterval2 = setInterval(function() {
+    secondsLeft2--;
     //timeEl.textContent = secondsLeft;
-    if(secondsLeft === 0) {
+    if(secondsLeft2 === 0) {
             //Stops execution of action at set interval
-        clearInterval(timerInterval);
+        clearInterval(timerInterval2);
         keepScore();
         alertEl.textContent = " ";
     }
@@ -86,15 +86,14 @@ function correctAnswer(){
 
 function wrongAnswer(){
     alertEl.textContent = "Wrong";
-    
 
-    var secondsLeft = 1;
-    var timerInterval = setInterval(function() {
-    secondsLeft--;
+    var secondsLeft3 = 1;
+    var timerInterval3 = setInterval(function() {
+    secondsLeft3--;
     //timeEl.textContent = secondsLeft;
-    if(secondsLeft === 0) {
+    if(secondsLeft3 === 0) {
             //Stops execution of action at set interval
-        clearInterval(timerInterval);
+        clearInterval(timerInterval3);
         alertEl.textContent = " ";
     }
     }, 1000);
@@ -103,12 +102,23 @@ function wrongAnswer(){
 var i = 0;
 //var zeroTime = true;
 
-function nextQuestion(){
+function setTime(){
         //Sets interval in variable
-    var secondsLeft = 2;
+    var secondsLeft = 10;
     var timerInterval = setInterval(function() {
     secondsLeft--;
     timeEl.textContent = secondsLeft;
+
+    if(secondsLeft < 1) {
+        //Stops execution of action at set interval 
+    clearInterval(timerInterval); 
+    submitScore();
+    }
+
+    }, 1000);    
+}
+
+function nextQuestion(){
 
     if(i < questions.length){
     promptEl.textContent = questions[i];
@@ -119,25 +129,7 @@ function nextQuestion(){
     i++;  
     }else if(i = questions.length){
         submitScore();
-    }else if(secondsLeft < 1){
-        submitScore();
     }
-
-    if(secondsLeft < 1) {
-        //Stops execution of action at set interval
-    //zeroTime = false;
-    
-    //timedOut();    
-    clearInterval(timerInterval); 
-    submitScore();
-    //finished = console.log("zeroTime");
-    }
-
-    }, 1000);
-
-  
- 
-    
 }
 
 function submitScore(){
@@ -150,14 +142,9 @@ function submitScore(){
     userInitials = document.getElementById("myText").value;
     showHighScore();
     });
-
-
 }
 
 function showHighScore(){
-    // document.getElementById("hideMe").style.visibility = 'hidden';
-    // document.getElementById("promptId").style.visibility = 'hidden';
-    
 
     submitBtnEl.addEventListener("click", function(event){
         document.getElementById("submitCard").style.visibility = 'hidden';
@@ -165,7 +152,6 @@ function showHighScore(){
         highScoreEl.textContent = userInitials + "-" + score.length; 
         console.log("High Score: " + highScoreEl.textContent);
     })
-
 }
 
 // function timedOut(){
